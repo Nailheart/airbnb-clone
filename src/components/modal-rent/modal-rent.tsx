@@ -61,7 +61,7 @@ const ModalRent = () => {
 
   const Map = useMemo(() => dynamic(() => import('../map/map'), {
     ssr: false
-  }), [location]);
+  }), [location]); // eslint-disable-line
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {

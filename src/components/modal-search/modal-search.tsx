@@ -37,7 +37,7 @@ const ModalSearch = () => {
 
   const Map = useMemo(() => dynamic(() => import('../map/map'), {
     ssr: false
-  }), [location]);
+  }), [location]); // eslint-disable-line
 
   const handleStepPrev = () => setStep((value) => value - 1);
   const handleStepNext = () => setStep((value) => value + 1);
