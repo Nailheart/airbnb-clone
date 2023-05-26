@@ -1,7 +1,8 @@
-import { Listing, User } from '@prisma/client';
+import { ListingResponseDto } from './listing-response-dto.type';
+import { UserResponseDto } from '../user/user-response-dto.type';
 
-type ListingAndUserResponseDto = Listing & {
-  user: User;
+type ListingAndUserResponseDto = ListingResponseDto & {
+  user: UserResponseDto;
 };
 
 export { type ListingAndUserResponseDto };

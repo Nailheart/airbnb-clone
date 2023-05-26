@@ -1,5 +1,16 @@
-import { Listing } from '@prisma/client';
+type ListingResponseDto = {
+  id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  createdAt: Date;
+  category: string;
+  roomCount: number;
+  bathroomCount: number;
+  guestCount: number;
+  locationValue: string;
+  userId: string;
+  price: number;
+};
 
-type ListingResponseDto = Listing;
-
-export { type ListingResponseDto }
+export { type ListingResponseDto };

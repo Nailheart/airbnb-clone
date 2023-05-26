@@ -55,7 +55,7 @@ const Listing: FC<Props> = ({
   }, [reservations]);
 
   const category = useMemo(() => {
-     return listingCategories.find((items) => items.label === listing.category);
+    return listingCategories.find((items) => items.label === listing.category);
   }, [listing.category]);
 
   const [isLoading, setIsLoading] = useState(false);
