@@ -36,11 +36,14 @@ const ListingReservation: FC<Props> = ({
       />
       <hr />
       <div className="p-4">
-        <Button 
-          label="Reserve"
+        <Button
+          className="text-base font-semibold"
+          size="lg"
           disabled={disabled}
           onClick={onSubmit}
-        />
+        >
+          Reserve
+        </Button>
       </div>
       <hr />
       <div className="flex justify-between gap-4 text-lg font-semibold p-4">

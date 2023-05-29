@@ -94,11 +94,12 @@ const ListingCard: FC<Props> = ({
       {onClick && actionLabel && (
         <Button
           className="mt-2"
-          label={actionLabel} 
+          size="sm"
           disabled={disabled}
-          small
           onClick={handleCancel}
-        />
+        >
+          {actionLabel}
+        </Button>
       )}
     </div>
   );

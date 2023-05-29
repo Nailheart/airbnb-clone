@@ -5,8 +5,7 @@ import { toast } from 'react-toastify';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { FcGoogle } from 'react-icons/fc';
-import { AiFillGithub } from 'react-icons/ai';
+import { ChromeIcon, GithubIcon } from 'lucide-react';
 
 import { useLoginModal, useRegisterModal } from '@/hooks/hooks';
 import { Button } from '../button/button';
@@ -87,30 +86,35 @@ const ModalLogin = () => {
   );
 
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-3">
-      <hr />
-      <Button 
-        label="Continue with Google"
-        icon={FcGoogle}
-        outline
-        onClick={() => signIn('google')}
-      />
-      <Button
-        label="Continue with Github"
-        icon={AiFillGithub}
-        outline
-        onClick={() => signIn('github')}
-      />
-      <div className="font-light text-neutral-500 text-center mt-[10px]">
+    <div className="flex flex-col gap-4 mt-6 pt-6 border-t">
+      <div className="flex items-center justify-center gap-4 flex-wrap">
+        <Button
+          className="w-auto"
+          variant="outline"
+          onClick={() => signIn('google')}
+        >
+          <ChromeIcon size={18} color="currentColor" />
+          <span className="ml-4">Continue with Google</span>
+        </Button>
+        <Button
+          className="w-auto"
+          variant="outline"
+          onClick={() => signIn('github')}
+        >
+          <GithubIcon size={18} color="currentColor" />
+          <span className="ml-4">Continue with Github</span>
+        </Button>
+      </div>
+      <p className="font-light text-neutral-500 text-center">
         <span>First time using Airbnb?&nbsp;</span>
-        <button
-          className="text-rose-500 font-semibold cursor-pointer hover:underline"
-          type="button"
+        <Button
+          className="text-rose-500 text-base font-semibold h-auto p-0"
+          variant="link"
           onClick={handleToggleModal}
         >
           Sign up
-        </button>
-      </div>
+        </Button>
+      </p>
     </div>
   );
 

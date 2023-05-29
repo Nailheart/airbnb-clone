@@ -66,7 +66,7 @@ const Modal: FC<Props> = ({
             : 'opacity-0 translate-y-full'
           }
         `}>
-        <header className="text-center p-6 border-b-[1px] relative">
+        <header className="text-center p-6 border-b relative">
           <button
             className="-mt-[18px] p-2 border-0 absolute top-1/2 left-9 transition hover:opacity-70"
             onClick={handleClose}
@@ -78,21 +78,27 @@ const Modal: FC<Props> = ({
         
         <div className="flex-auto p-6">{body}</div>
       
-        <footer className="flex flex-col gap-2 p-6">
+        <footer className="flex flex-col p-6">
           <div className="flex items-center gap-4">
             {secondaryActionLabel && secondaryAction && (
               <Button
-                label={secondaryActionLabel}
+                className="text-base font-semibold"
+                variant="outline"
+                size="lg"
                 disabled={disabled}
-                outline
                 onClick={handleSecondaryAction}
-              />
+              >
+                {secondaryActionLabel}
+              </Button>
             )}
             <Button
-              label={actionLabel}
+              className="text-base font-semibold"
+              size="lg"
               disabled={disabled}
               onClick={handleSubmit}
-            />
+            >
+              {actionLabel}
+            </Button>
           </div>
           {footer}
         </footer>
