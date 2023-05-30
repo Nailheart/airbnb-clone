@@ -8,8 +8,7 @@ import { AlignJustifyIcon } from 'lucide-react';
 import { AppRoute } from '@/common/enums/enums';
 import { UserResponseDto } from '@/common/types/types';
 import { useLoginModal, useRegisterModal, useRentModal } from '@/hooks/hooks';
-import { Avatar } from '../../avatar/avatar';
-import { Button } from '@/components/button/button';
+import { Avatar } from '@/components/avatar/avatar';
 
 type Props = {
   user?: UserResponseDto | null;
@@ -31,7 +30,6 @@ const UserMenu: FC<Props> = ({ user }) => {
 
     rentModal.onOpen();
   };
-
 
   return (
     <div className="relative">

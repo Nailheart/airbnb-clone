@@ -87,24 +87,20 @@ const ModalRegister = () => {
 
   const footerContent = (
     <div className="flex flex-col gap-4 mt-6 pt-6 border-t">
-      <div className="flex items-center justify-center gap-4 flex-wrap">
-        <Button
-          className="w-auto"
-          variant="outline"
-          onClick={() => signIn('google')}
-        >
-          <ChromeIcon size={18} color="currentColor" />
-          <span className="ml-4">Continue with Google</span>
-        </Button>
-        <Button
-          className="w-auto"
-          variant="outline"
-          onClick={() => signIn('github')}
-        >
-          <GithubIcon size={18} color="currentColor" />
-          <span className="ml-4">Continue with Github</span>
-        </Button>
-      </div>
+      <Button
+        variant="outline"
+        onClick={() => signIn('google')}
+      >
+        <ChromeIcon size={18} color="currentColor" />
+        <span className="ml-4">Continue with Google</span>
+      </Button>
+      <Button
+        variant="outline"
+        onClick={() => signIn('github')}
+      >
+        <GithubIcon size={18} color="currentColor" />
+        <span className="ml-4">Continue with Github</span>
+      </Button>
       <p className="font-light text-neutral-500 text-center">
         <span>Already have an account?&nbsp;</span>
         <Button
