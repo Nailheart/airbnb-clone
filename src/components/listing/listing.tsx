@@ -14,7 +14,7 @@ import {
 } from '@/common/types/types';
 import { useLoginModal } from '@/hooks/hooks';
 import { listingCategories } from '@/common/constants/constants';
-import { Container } from '../container/container';
+import { Container } from '@/components/container/container';
 import { ListingHead } from './listing-head/listing-head';
 import { ListingInfo } from './listing-info/listing-info';
 import { ListingReservation } from './listing-reservation/listing-reservation';

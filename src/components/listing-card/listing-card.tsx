@@ -10,8 +10,8 @@ import {
   ListingResponseDto,
 } from '@/common/types/types';
 import { useCountries } from '@/hooks/hooks';
-import { Button } from '../button/button';
-import { ButtonHeart } from '../button-heart/button-heart';
+import { Button } from '@/components/button/button';
+import { ButtonHeart } from '@/components/button-heart/button-heart';
 import Link from 'next/link';
 
 type Props = {

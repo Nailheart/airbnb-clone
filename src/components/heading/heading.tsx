@@ -6,7 +6,7 @@ type Props = {
   className?: string;
 }
 
-const Heading: FC<Props> = ({ title, description, className="" }) => {
+const Heading: FC<Props> = ({ title, description, className }) => {
   return (
     <div className={className}>
       <h2 className="text-2xl font-bold">{title}</h2>

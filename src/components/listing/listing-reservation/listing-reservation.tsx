@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Range } from 'react-date-range';
-import { Button } from '../../button/button';
-import { Calendar } from '../../calendar/calendar';
+import { Button } from '@/components/button/button';
+import { Calendar } from '@/components/calendar/calendar';
 
 type Props = {
   price: number;

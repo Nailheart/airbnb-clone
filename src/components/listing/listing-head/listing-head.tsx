@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 import { UserResponseDto } from '@/common/types/types';
 import { useCountries } from '@/hooks/hooks';
-import { ButtonHeart } from '../../button-heart/button-heart';
-import { Heading } from '../../heading/heading';
+import { ButtonHeart } from '@/components/button-heart/button-heart';
+import { Heading } from '@/components/heading/heading';
 
 type Props = {
   id: string;

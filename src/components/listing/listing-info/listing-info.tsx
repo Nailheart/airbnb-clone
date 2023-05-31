@@ -3,9 +3,9 @@ import { IconType } from 'react-icons';
 
 import { UserResponseDto } from '@/common/types/types';
 import { useCountries } from '@/hooks/hooks';
-import { Avatar } from '../../avatar/avatar';
-import { ListingCategory } from '../../listing-category/listing-category';
-import Map from '../../map/map';
+import { Avatar } from '@/components/avatar/avatar';
+import { ListingCategory } from '@/components/listing-category/listing-category';
+import Map from '@/components/map/map';
 
 type Props = {
   user: UserResponseDto;

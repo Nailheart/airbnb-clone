@@ -10,11 +10,11 @@ import { formatISO } from 'date-fns';
 import { ModalSearchSteps } from '@/common/enums/enums';
 import { CountrySelectValue } from '@/common/types/types';
 import { useSearchModal } from '@/hooks/hooks';
-import { Calendar } from '../calendar/calendar';
-import { Counter } from '../counter/counter';
-import { CountrySelect } from '../country-select/country-select';
-import { Modal } from '../modal/modal';
-import { Heading } from '../heading/heading';
+import { Calendar } from '@/components/calendar/calendar';
+import { Counter } from '@/components/counter/counter';
+import { CountrySelect } from '@/components/country-select/country-select';
+import { Modal } from '@/components/modal/modal';
+import { Heading } from '@/components/heading/heading';
 
 const ModalSearch = () => {
   const router = useRouter();

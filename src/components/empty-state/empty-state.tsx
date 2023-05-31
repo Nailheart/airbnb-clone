@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 import { AppRoute } from '@/common/enums/enums';
-import { Heading } from '../heading/heading';
+import { Heading } from '@/components/heading/heading';
 
 type Props = {
   title?: string;

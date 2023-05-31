@@ -3,6 +3,7 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 import { UserResponseDto } from '@/common/types/types';
 import { useFavorite } from '@/hooks/hooks';
+import { cn } from '@/helpers/helpers';
 
 type Props = {
   listingId: string;
@@ -10,7 +11,7 @@ type Props = {
   currentUser?: UserResponseDto | null;
 }
 
-const ButtonHeart: FC<Props> = ({ listingId, className="", currentUser }) => {
+const ButtonHeart: FC<Props> = ({ listingId, className, currentUser }) => {
   const { hasFavorited, toggleFavorite } = useFavorite({
     listingId,
     currentUser,
@@ -18,13 +19,10 @@ const ButtonHeart: FC<Props> = ({ listingId, className="", currentUser }) => {
 
   return (
     <button
-      className={`
-        relative
-        cursor-pointer
-        hover:opacity-80
-        transition
-        ${className}
-      `}
+      className={cn(
+        'relative cursor-pointer hover:opacity-80 transition',
+        className
+      )}
       type="button"
       onClick={toggleFavorite}
     >

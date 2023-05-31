@@ -8,10 +8,10 @@ import { toast } from 'react-toastify';
 import { ChromeIcon, GithubIcon } from 'lucide-react';
 
 import { useLoginModal, useRegisterModal } from '@/hooks/hooks';
-import { Button } from '../button/button';
-import { Input } from '../input/input';
-import { Modal } from '../modal/modal';
-import { Heading } from '../heading/heading';
+import { Button } from '@/components/button/button';
+import { Input } from '@/components/input/input';
+import { Modal } from '@/components/modal/modal';
+import { Heading } from '@/components/heading/heading';
 
 const ModalRegister = () => {
   const loginModal = useLoginModal();

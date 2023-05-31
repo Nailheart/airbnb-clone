@@ -10,13 +10,13 @@ import { toast } from 'react-toastify';
 import { ModalRentSteps } from '@/common/enums/enums';
 import { useRentModal } from '@/hooks/hooks';
 import { listingCategories } from '@/common/constants/constants';
-import { CategoryInput } from '../category-input/category-input';
-import { Counter } from '../counter/counter';
-import { CountrySelect } from '../country-select/country-select';
-import { ImageUpload } from '../image-upload/image-upload';
-import { Input } from '../input/input';
-import { Modal } from '../modal/modal';
-import { Heading } from '../heading/heading';
+import { CategoryInput } from '@/components/category-input/category-input';
+import { Counter } from '@/components/counter/counter';
+import { CountrySelect } from '@/components/country-select/country-select';
+import { ImageUpload } from '@/components/image-upload/image-upload';
+import { Input } from '@/components/input/input';
+import { Modal } from '@/components/modal/modal';
+import { Heading } from '@/components/heading/heading';
 
 const ModalRent = () => {
   const router = useRouter();

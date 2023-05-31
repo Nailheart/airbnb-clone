@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
 import { ListingResponseDto, UserResponseDto } from '@/common/types/types';
-import { Container } from "../container/container";
-import { ListingCard } from "../listing-card/listing-card";
-import { Heading } from '../heading/heading';
-import { GridList } from '../grid-list/grid-list';
+import { Container } from "@/components/container/container";
+import { ListingCard } from "@/components/listing-card/listing-card";
+import { Heading } from '@/components/heading/heading';
+import { GridList } from '@/components/grid-list/grid-list';
 
 type Props = {
   listings: ListingResponseDto[];
