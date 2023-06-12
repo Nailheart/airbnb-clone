@@ -2,7 +2,7 @@ type CountrySelectValue = {
   flag: string;
   label: string;
   value: string;
-  latlng: number[];
+  latlng: [number, number];
   region: string;
 };
 

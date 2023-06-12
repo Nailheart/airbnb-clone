@@ -1,40 +1,58 @@
-import { FC } from 'react';
-import L from 'leaflet';
-import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+'use client';
 
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import { FC, useEffect } from 'react';
+import L, { LatLngExpression } from 'leaflet';
+import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// @ts-ignore
-delete L.Icon.Default.prototype._getIconUrl; 
-L.Icon.Default.mergeOptions({
-    iconUrl: markerIcon.src,
-    iconRetinaUrl: markerIcon2x.src,
-    shadowUrl: markerShadow.src,
-});
+import { cn } from '@/helpers/helpers';
 
 type Props = {
-  center?: number[];
+  center?: LatLngExpression;
 }
 
-const url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+const ResetCenterView = ({ selectPosition }: { selectPosition?: LatLngExpression }) => {
+  const map = useMap();
 
-// TODO: refactor map
+  useEffect(() => {
+    if (selectPosition) {
+      map.setView(
+        L.latLng(selectPosition),
+        5,
+        {
+          animate: true
+        }
+      )
+    } else {
+      map.setZoom(2);
+    }
+  }, [selectPosition]);
+
+  return null;
+}
+
 const Map: FC<Props> = ({ center }) => {
   return (
     <MapContainer
-      className="h-[35vh] rounded-lg relative z-0"
-      center={center as L.LatLngExpression || [51, -0.09]}
-      zoom={center ? 4 : 2}
+      className={cn('h-[35vh] rounded-lg relative z-0')}
+      center={center || [51, -0.09]}
+      zoom={2}
       scrollWheelZoom={false}
     >
-      <TileLayer url={url} attribution={attribution} />
-      {center && <Marker position={center as L.LatLngExpression} />}
+      <TileLayer 
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+      />
+      {center && (
+        <Marker position={center}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      )}
+      <ResetCenterView selectPosition={center} />
     </MapContainer>
   );
 };
 
-export default Map;
+export { Map };

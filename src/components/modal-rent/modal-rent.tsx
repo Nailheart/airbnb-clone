@@ -1,8 +1,7 @@
 'use client';
 
 import axios from 'axios';
-import dynamic from 'next/dynamic';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -17,6 +16,7 @@ import { ImageUpload } from '@/components/image-upload/image-upload';
 import { Input } from '@/components/input/input';
 import { Modal } from '@/components/modal/modal';
 import { Heading } from '@/components/heading/heading';
+import { Map } from '@/components/map/map';
 
 const ModalRent = () => {
   const router = useRouter();
@@ -58,10 +58,6 @@ const ModalRent = () => {
 
   const handleStepPrev = () => setStep((value) => value - 1);
   const handleStepNext = () => setStep((value) => value + 1);
-
-  const Map = useMemo(() => dynamic(() => import('../map/map'), {
-    ssr: false
-  }), [location]); // eslint-disable-line
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {

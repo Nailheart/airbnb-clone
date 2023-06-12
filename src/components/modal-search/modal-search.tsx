@@ -1,10 +1,9 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import qs, { ParsedQuery } from 'query-string';
-import dynamic from 'next/dynamic';
-import { Range } from 'react-date-range';
+import { Range } from 'react-date-range'; // TODO: move to type
 import { formatISO } from 'date-fns';
 
 import { ModalSearchSteps } from '@/common/enums/enums';
@@ -15,6 +14,7 @@ import { Counter } from '@/components/counter/counter';
 import { CountrySelect } from '@/components/country-select/country-select';
 import { Modal } from '@/components/modal/modal';
 import { Heading } from '@/components/heading/heading';
+import { Map } from '@/components/map/map';
 
 const ModalSearch = () => {
   const router = useRouter();
@@ -34,10 +34,6 @@ const ModalSearch = () => {
 
   const actionLabel = step === ModalSearchSteps.INFO ? 'Search' : 'Next';
   const secondaryActionLabel = step === ModalSearchSteps.LOCATION ? undefined : 'Back';
-
-  const Map = useMemo(() => dynamic(() => import('../map/map'), {
-    ssr: false
-  }), [location]); // eslint-disable-line
 
   const handleStepPrev = () => setStep((value) => value - 1);
   const handleStepNext = () => setStep((value) => value + 1);

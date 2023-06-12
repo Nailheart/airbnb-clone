@@ -5,7 +5,7 @@ import { UserResponseDto } from '@/common/types/types';
 import { useCountries } from '@/hooks/hooks';
 import { Avatar } from '@/components/avatar/avatar';
 import { ListingCategory } from '@/components/listing-category/listing-category';
-import Map from '@/components/map/map';
+import { Map } from '@/components/map/map';
 
 type Props = {
   user: UserResponseDto;
