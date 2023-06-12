@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
 import { AlignJustifyIcon } from 'lucide-react';
