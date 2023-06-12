@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
 import { AlignJustifyIcon } from 'lucide-react';
@@ -46,7 +46,7 @@ const UserMenu: FC<Props> = ({ user }) => {
           Airbnb your home
         </button>
 
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
             <button
               className="flex items-center p-[15px] border border-neutral-200 rounded-full cursor-pointer transition hover:shadow-md md:p-[5px_5px_5px_12px]"
