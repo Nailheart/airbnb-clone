@@ -59,7 +59,7 @@ const ListingInfo: FC<Props> = ({
       )}
       <p className="text-lg font-light text-neutral-500">{description}</p>
       <hr />
-      <Map center={coordinates} />
+      <Map center={coordinates} label={getByValue(locationValue)?.label} />
     </div>
   );
 };
