@@ -74,7 +74,7 @@ const ListingCard: FC<Props> = ({
           <div className="aspect-square rounded-xl overflow-hidden relative">
             <Image
               className="w-full h-full object-cover group-hover:scale-110 transition"
-              src={data.imageSrc || '/images/default_property.png'}
+              src={data.imageSrc || '/images/property_placeholder.jpg'}
               fill
               alt={data.description}
             />

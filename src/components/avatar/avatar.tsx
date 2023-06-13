@@ -12,7 +12,7 @@ const Avatar: FC<Props> = ({ src }) => {
       width="30"
       height="30"
       alt="Avatar"
-      src={src || '/images/placeholder.jpg'}
+      src={src || '/images/avatar_placeholder.jpg'}
     />
   );
 };

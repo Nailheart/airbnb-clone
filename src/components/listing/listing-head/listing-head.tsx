@@ -5,6 +5,7 @@ import { UserResponseDto } from '@/common/types/types';
 import { useCountries } from '@/hooks/hooks';
 import { ButtonHeart } from '@/components/button-heart/button-heart';
 import { Heading } from '@/components/heading/heading';
+import { cn } from '@/helpers/helpers';
 
 type Props = {
   id: string;
@@ -30,10 +31,13 @@ const ListingHead: FC<Props> = ({
         title={title}
         description={`${location?.region}, ${location?.label}`}
       />
-      <div className="h-[60vh] relative">
+      <div className="h-[60vh] relative bg-[#efefef] rounded-xl">
         <Image
-          className="w-full object-cover rounded-xl"
-          src={imageSrc || '/images/default_property.png'}
+          className={cn(
+            'w-full object-contain rounded-xl',
+            imageSrc && 'object-cover'
+          )}
+          src={imageSrc || '/images/property_placeholder.jpg'}
           fill
           alt="Picture of the house"
         />
