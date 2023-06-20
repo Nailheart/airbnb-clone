@@ -62,7 +62,6 @@ const UserMenu: FC<Props> = ({ user }) => {
             {user ?
               (
                 <>
-                  {/* TOOD: add airbnb home */}
                   {[
                     ['Home', AppRoute.ROOT],
                     ['Trips', AppRoute.TRIPS],
@@ -89,6 +88,14 @@ const UserMenu: FC<Props> = ({ user }) => {
                       </Link>
                     </DropdownMenuItem>
                   ))}
+                  <DropdownMenuItem className="md:hidden">
+                   <button className="font-semibold text-left w-full px-4 py-3 transition hover:bg-neutral-100"
+                      type="button"
+                      onClick={showRentModal}
+                    >
+                      Airbnb your home
+                    </button>
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator className="bg-border" />
                   <DropdownMenuItem>
                     <button
