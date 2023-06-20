@@ -3,15 +3,19 @@
 import { FC } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import qs, { ParsedQuery } from 'query-string';
-import { IconType } from 'react-icons';
+
+import { IconName } from '@/common/types/types';
+import { cn } from '@/helpers/helpers';
+import { Icon } from '@/components/icon/icon';
 
 type Props = {
-  icon: IconType;
   label: string;
+  iconName: IconName;
   selected?: boolean;
+  className?: string;
 }
 
-const CategoryItem: FC<Props> = ({ icon: Icon, label, selected }) => {
+const CategoryItem: FC<Props> = ({ label, iconName, selected, className }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -38,25 +42,14 @@ const CategoryItem: FC<Props> = ({ icon: Icon, label, selected }) => {
 
   return (
     <button
-      className={`
-        flex
-        flex-col
-        items-center
-        justify-center
-        gap-2
-        p-3
-        border-b-2
-        cursor-pointer
-        hover:text-neutral-800
-        transition
-        ${selected
-          ? 'text-neutral-800 border-b-neutral-800'
-          : 'text-neutral-500 border-transparent'
-        }
-      `}
+      className={cn(
+        'flex flex-col items-center justify-center gap-2 text-neutral-500 p-3 border-b-2 border-transparent cursor-pointer hover:text-neutral-800 transition',
+        selected && 'text-neutral-800 border-b-neutral-800',
+        className
+      )}
       onClick={handleClick}
     >
-      <Icon size={26} />
+      <Icon name={iconName} size={26} />
       <span className="text-sm font-medium">{label}</span>
     </button>
   );

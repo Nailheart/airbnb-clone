@@ -2,9 +2,10 @@
 
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { BiSearch } from 'react-icons/bi';
 import { differenceInDays } from 'date-fns';
+
 import { useCountries, useSearchModal } from '@/hooks/hooks';
+import { Icon } from '@/components/icon/icon';
 
 const Search = () => {
   const params = useSearchParams();
@@ -61,7 +62,7 @@ const Search = () => {
         <div className="flex items-center gap-3 text-gray-600 text-sm pl-6 pr-2">
           <span className="hidden sm:block">{guestLabel}</span>
           <div className="text-white p-2 bg-rose-500 rounded-full">
-            <BiSearch size={18} />
+            <Icon name="search" size={18} />
           </div>
         </div>
       </div>

@@ -5,13 +5,13 @@ import { useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-toastify';
-import { ChromeIcon, GithubIcon } from 'lucide-react';
 
 import { useLoginModal, useRegisterModal } from '@/hooks/hooks';
 import { Button } from '@/components/button/button';
 import { Input } from '@/components/input/input';
 import { Modal } from '@/components/modal/modal';
 import { Heading } from '@/components/heading/heading';
+import { Icon } from '@/components/icon/icon';
 
 const ModalRegister = () => {
   const loginModal = useLoginModal();
@@ -91,14 +91,14 @@ const ModalRegister = () => {
         variant="outline"
         onClick={() => signIn('google')}
       >
-        <ChromeIcon size={18} color="currentColor" />
+        <Icon name="chrome" size={18} color="currentColor" />
         <span className="ml-4">Continue with Google</span>
       </Button>
       <Button
         variant="outline"
         onClick={() => signIn('github')}
       >
-        <GithubIcon size={18} color="currentColor" />
+        <Icon name="github" size={18} color="currentColor" />
         <span className="ml-4">Continue with Github</span>
       </Button>
       <p className="font-light text-neutral-500 text-center">

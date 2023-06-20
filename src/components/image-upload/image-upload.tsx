@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import { CldUploadWidget } from 'next-cloudinary';
-import { TbPhotoPlus } from 'react-icons/tb';
 
 import { FileUploadResponseDto } from '@/common/types/types';
+import { Icon } from '@/components/icon/icon';
 
 type Props = {
   value: string;
@@ -29,7 +29,7 @@ const ImageUpload: FC<Props> = ({ value, onChange }) => {
               type="button"
               onClick={() => open?.()}
             >
-              <TbPhotoPlus size={50} />
+              <Icon name="imagePlus" size={50} />
               <p className="text-lg font-semibold">Click to upload</p>
             </button>
             

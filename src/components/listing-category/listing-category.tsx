@@ -1,16 +1,22 @@
 import { FC } from 'react';
-import { IconType } from 'react-icons';
+
+import { IconName } from '@/common/types/types';
+import { Icon } from '@/components/icon/icon';
 
 type Props = {
   label: string;
+  iconName: IconName;
   description: string;
-  icon: IconType;
 }
 
-const ListingCategory: FC<Props> = ({ label, description, icon: Icon }) => {
+const ListingCategory: FC<Props> = ({ label, iconName, description }) => {
   return ( 
     <div className="flex items-center gap-4">
-      <Icon className="text-neutral-600" size={40} />
+      <Icon 
+        className="text-neutral-600"
+        name={iconName}
+        size={40}
+      />
       <div className="flex flex-col">
         <span className="text-lg font-semibold">{label}</span>
         <span className="text-neutral-500 font-light">{description}</span>

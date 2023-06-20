@@ -20,7 +20,7 @@ const CategoryList = () => {
         {listingCategories.map(item => (
           <CategoryItem
             key={item.label}
-            icon={item.icon}
+            iconName={item.iconName}
             label={item.label}
             selected={category === item.label}
           />

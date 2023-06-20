@@ -3,7 +3,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { signOut } from 'next-auth/react';
-import { AlignJustifyIcon } from 'lucide-react';
 
 import { AppRoute } from '@/common/enums/enums';
 import { UserResponseDto } from '@/common/types/types';
@@ -16,6 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/dropdown-menu/dropdown-menu';
+import { Icon } from '@/components/icon/icon';
 
 type Props = {
   user?: UserResponseDto | null;
@@ -52,7 +52,7 @@ const UserMenu: FC<Props> = ({ user }) => {
               className="flex items-center p-[15px] border border-neutral-200 rounded-full cursor-pointer transition hover:shadow-md md:p-[5px_5px_5px_12px]"
               type="button"
             >
-              <AlignJustifyIcon size={20} />
+              <Icon name="alignJustify" size={20} />
               <div className="hidden md:block ml-3">
                 <Avatar src={user?.image} />
               </div>
@@ -62,6 +62,7 @@ const UserMenu: FC<Props> = ({ user }) => {
             {user ?
               (
                 <>
+                  {/* TOOD: add airbnb home */}
                   {[
                     ['Home', AppRoute.ROOT],
                     ['Trips', AppRoute.TRIPS],

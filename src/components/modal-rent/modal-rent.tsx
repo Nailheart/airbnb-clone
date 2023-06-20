@@ -101,7 +101,7 @@ const ModalRent = () => {
           <CategoryInput
             key={item.label}
             label={item.label}
-            icon={item.icon}
+            iconName={item.iconName}
             selected={category === item.label}
             onClick={(category: string) => setCustomValue('category', category)}
           />

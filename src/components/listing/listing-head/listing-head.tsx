@@ -2,10 +2,10 @@ import { FC } from 'react';
 import Image from 'next/image';
 
 import { UserResponseDto } from '@/common/types/types';
+import { cn } from '@/helpers/helpers';
 import { useCountries } from '@/hooks/hooks';
 import { ButtonHeart } from '@/components/button-heart/button-heart';
 import { Heading } from '@/components/heading/heading';
-import { cn } from '@/helpers/helpers';
 
 type Props = {
   id: string;

@@ -1,0 +1,35 @@
+type IconName =
+  // lucide icons
+  | 'alignJustify'
+  | 'check'
+  | 'chevronRight'
+  | 'circle'
+  | 'chrome'
+  | 'github'
+  | 'user'
+  | 'x'
+  | 'plus'
+  | 'minus'
+  | 'imagePlus'
+  | 'search'
+  | 'dollarSign'
+  // custom icons
+  | 'airbnb'
+  | 'beach'
+  | 'windmill'
+  | 'villa'
+  | 'mountain'
+  | 'pool'
+  | 'island'
+  | 'boatFishing'
+  | 'skiing'
+  | 'castle'
+  | 'cave'
+  | 'camp'
+  | 'snow'
+  | 'cactus'
+  | 'barn'
+  | 'diamond'
+  | 'heart';
+
+export { type IconName };

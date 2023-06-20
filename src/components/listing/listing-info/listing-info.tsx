@@ -1,7 +1,6 @@
 import { FC } from 'react';
-import { IconType } from 'react-icons';
 
-import { UserResponseDto } from '@/common/types/types';
+import { IconName, UserResponseDto } from '@/common/types/types';
 import { useCountries } from '@/hooks/hooks';
 import { Avatar } from '@/components/avatar/avatar';
 import { ListingCategory } from '@/components/listing-category/listing-category';
@@ -14,11 +13,11 @@ type Props = {
   roomCount: number;
   bathroomCount: number;
   locationValue: string;
-  category: {
-    icon: IconType;
+  category?: {
     label: string;
+    iconName: IconName;
     description: string;
-  } | undefined;
+  };
 }
 
 const ListingInfo: FC<Props> = ({
@@ -50,8 +49,8 @@ const ListingInfo: FC<Props> = ({
       {category && (
         <>
           <ListingCategory
-            icon={category.icon} 
-            label={category?.label}
+            label={category.label}
+            iconName={category.iconName}
             description={category?.description} 
           />
           <hr />

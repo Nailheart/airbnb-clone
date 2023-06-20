@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+
+import { Icon } from '@/components/icon/icon';
 
 type Props = {
   title: string;
@@ -27,8 +28,8 @@ const Counter: FC<Props> = ({ title, subtitle, value, onChange }) => {
             flex
             items-center
             justify-center
-            w-10
-            h-10
+            w-8
+            h-8
             rounded-full
             border-[1px]
             text-neutral-600
@@ -40,16 +41,17 @@ const Counter: FC<Props> = ({ title, subtitle, value, onChange }) => {
           type="button"
           onClick={handleDecrement}
         >
-          <AiOutlineMinus />
+          <Icon name="minus" size={18} />
         </button>
-        <div className="font-light text-xl text-neutral-600">{value}</div>
+        {/* TODO: replace to input */}
+        <div className="text-lg">{value}</div>
         <button
           className="
             flex
             items-center
             justify-center
-            w-10
-            h-10
+            w-8
+            h-8
             rounded-full
             border-[1px]
             text-neutral-600
@@ -61,7 +63,7 @@ const Counter: FC<Props> = ({ title, subtitle, value, onChange }) => {
           type="button"
           onClick={handleIncrement}
         >
-          <AiOutlinePlus />
+          <Icon name="plus" size={18} />
         </button>
       </div>
     </div>

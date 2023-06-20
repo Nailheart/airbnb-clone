@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import { IconType } from 'react-icons';
 
+import { IconName } from '@/common/types/types';
 import { cn } from '@/helpers/helpers';
+import { Icon } from '@/components/icon/icon';
 
 type Props = {
   label: string;
-  icon: IconType;
+  iconName: IconName;
   selected?: boolean;
   className?: string;
   onClick: (value: string) => void;
@@ -13,7 +14,7 @@ type Props = {
 
 const CategoryInput: FC<Props> = ({
   label,
-  icon: Icon,
+  iconName,
   selected,
   className,
   onClick
@@ -29,7 +30,7 @@ const CategoryInput: FC<Props> = ({
       )}
       onClick={handleClick}
     >
-      <Icon size={30} />
+      <Icon name={iconName} size={30} />
       <span className="font-semibold">{label}</span>
     </div>
    );

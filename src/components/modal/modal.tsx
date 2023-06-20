@@ -2,9 +2,9 @@
 
 import { FC, ReactElement } from 'react';
 import { Close, Content, Overlay, Portal, Root } from '@radix-ui/react-dialog';
-import { X } from 'lucide-react';
 
 import { Button } from '@/components/button/button';
+import { Icon } from '@/components/icon/icon';
 
 type Props = {
   title?: string;
@@ -40,7 +40,7 @@ const Modal: FC<Props> = ({
       <Portal>
         <div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
           <Overlay className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-100 data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in" />
-          <Content className="max-h-[100vh] overflow-y-auto fixed z-50 grid w-full rounded-b-lg border bg-background shadow-lg animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:max-w-2xl sm:rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0">
+          <Content className="max-h-[100vh] overflow-y-auto fixed z-50 grid w-full rounded-b-lg border bg-background shadow-lg animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:max-w-2xl sm:rounded-lg">
             <header className="text-center px-6 py-4 border-b">
               <span className="text-xl font-semibold">{title}</span>
             </header>
@@ -70,7 +70,7 @@ const Modal: FC<Props> = ({
               {footer}
             </footer>
             <Close className="absolute left-6 top-[22px] rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-              <X className="h-4 w-4" />
+              <Icon name="x" className="h-4 w-4" />
               <span className="sr-only">Close</span>
             </Close>
           </Content>

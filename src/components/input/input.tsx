@@ -2,9 +2,9 @@
 
 import { FC } from 'react';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
-import { BiDollar } from 'react-icons/bi';
 
 import { cn } from '@/helpers/helpers';
+import { Icon } from '@/components/icon/icon';
 
 type Props = {
   id: string;
@@ -30,7 +30,16 @@ const Input: FC<Props> = ({
   return (
     <div className="relative">
       {formatPrice && (
-        <BiDollar className="text-neutral-700 absolute top-5 left-2" size={24} />
+        <Icon
+          name="dollarSign"
+          className="
+            text-neutral-700
+            absolute
+            top-1/2
+            left-2
+            -translate-y-1/2
+          "
+        />
       )}
       <input
         id={id}

@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 import { UserResponseDto } from '@/common/types/types';
 import { useFavorite } from '@/hooks/hooks';
 import { cn } from '@/helpers/helpers';
+import { Icon } from '@/components/icon/icon';
 
 type Props = {
   listingId: string;
@@ -20,22 +20,21 @@ const ButtonHeart: FC<Props> = ({ listingId, className, currentUser }) => {
   return (
     <button
       className={cn(
-        'relative cursor-pointer hover:opacity-80 transition',
+        'cursor-pointer hover:opacity-80 transition',
         className
       )}
       type="button"
       onClick={toggleFavorite}
     >
-      <AiOutlineHeart
-        className="fill-white absolute -top-[2px] -right-[2px]"
-        size={28}
-      />
-      <AiFillHeart
-        className={hasFavorited ? 'fill-rose-500' : 'fill-neutral-500/70'}
-        size={24}
+      <Icon
+        name="heart"
+        className={cn(
+          'fill-neutral-500/70 stroke-white',
+          hasFavorited && 'fill-rose-500'
+        )}
       />
     </button>
-   );
+  );
 };
 
 export { ButtonHeart };
