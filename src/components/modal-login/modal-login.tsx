@@ -13,7 +13,6 @@ import { Modal } from '@/components/modal/modal';
 import { Heading } from '@/components/heading/heading';
 import { Icon } from '@/components/icon/icon';
 
-
 const ModalLogin = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
@@ -36,22 +35,21 @@ const ModalLogin = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn('credentials', { 
+    signIn('credentials', {
       ...data,
       redirect: false,
     })
     .then((callback) => {
       setIsLoading(false);
 
-      if (callback?.ok) {
-        toast.success('Logged in');
-        router.refresh();
-        loginModal.onClose();
-      }
-      
       if (callback?.error) {
         toast.error(callback.error);
-      }
+        return;
+      }    
+    
+      toast.success('Logged in');
+      router.refresh();
+      loginModal.onClose();
     });
   }
 

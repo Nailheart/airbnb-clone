@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-toastify';
@@ -14,6 +15,7 @@ import { Heading } from '@/components/heading/heading';
 import { Icon } from '@/components/icon/icon';
 
 const ModalRegister = () => {
+  const router = useRouter();
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -33,10 +35,26 @@ const ModalRegister = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    // TODO: sain in after success register
     axios.post('/api/register', data)
       .then(() => {
         registerModal.onClose();
+
+        signIn('credentials', {
+          ...data,
+          redirect: false,
+        })
+        .then((callback) => {
+          setIsLoading(false);
+    
+          if (callback?.error) {
+            toast.error(callback.error);
+            return;
+          }    
+        
+          toast.success('Logged in');
+          router.refresh();
+          loginModal.onClose();
+        });
       })
       .catch((error: Error) => {
         toast.error(error.message);

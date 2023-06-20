@@ -1,10 +1,11 @@
 import bcrypt from 'bcrypt';
 import NextAuth, { AuthOptions } from 'next-auth';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import prisma from '@/libs/prismadb';
+
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
-import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import prisma from '@/libs/prismadb';
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -20,38 +21,39 @@ export const authOptions: AuthOptions = {
     CredentialsProvider({
       name: 'credentials',
       credentials: {
-        email: { label: 'email', type: 'text' },
-        password: { label: 'password', type: 'password' }
+        email: { label: 'Email', type: 'text' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        if (!credentials || !credentials.email || !credentials.password) {
           throw new Error('Invalid credentials');
         }
 
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email }
-        });
+        const { email, password } = credentials;
 
-        if (!user || !user?.hashedPassword) {
+        const user = await prisma.user.findUnique({ where: { email } });
+
+        if (!user || !user.hashedPassword) {
           throw new Error('Invalid credentials');
         }
 
-        const isCorrectPassword = await bcrypt.compare(
-          credentials.password,
-          user.hashedPassword,
-        );
+        const isCorrectPassword = await bcrypt.compare(password, user.hashedPassword);
 
         if (!isCorrectPassword) {
           throw new Error('Invalid credentials');
         }
 
         return user;
-      }
+      },
     }),
   ],
-  pages: { signIn: '/' },
+  pages: {
+    signIn: '/',
+  },
   debug: process.env.NODE_ENV === 'development',
-  session: { strategy: 'jwt' },
+  session: {
+    strategy: 'jwt',
+  },
   secret: process.env.NEXTAUTH_SECRET,
 };
 
