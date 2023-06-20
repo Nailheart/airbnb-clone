@@ -40,7 +40,7 @@ const getListings = async (params: ListingRequestDto) => {
         reservations: {
           some: {
             OR: [
-              // TODO: lte = value is less than or equal
+              // lte = value is less than or equal
               {
                 startDate: { lte: startDate },
                 endDate: { gte: startDate },

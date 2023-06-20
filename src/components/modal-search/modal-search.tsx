@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import qs, { ParsedQuery } from 'query-string';
-import { Range } from 'react-date-range'; // TODO: move to type
+import { Range } from 'react-date-range';
 import { formatISO } from 'date-fns';
 
 import { ModalSearchSteps } from '@/common/enums/enums';

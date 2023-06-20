@@ -13,5 +13,3 @@ export type {
 } from './reservation/reservation';
 export type { UserResponseDto } from './user/user';
 export type { IconName } from './ui/ui';
-
-export type { Range } from 'react-date-range';
