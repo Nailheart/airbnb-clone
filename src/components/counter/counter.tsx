@@ -24,42 +24,15 @@ const Counter: FC<Props> = ({ title, subtitle, value, onChange }) => {
       </div>
       <div className="flex items-center gap-4">
         <button
-          className="
-            flex
-            items-center
-            justify-center
-            w-8
-            h-8
-            rounded-full
-            border-[1px]
-            text-neutral-600
-            border-neutral-400
-            cursor-pointer
-            hover:opacity-80
-            transition
-          "
+          className="counter-btn"
           type="button"
           onClick={handleDecrement}
         >
           <Icon name="minus" size={18} />
         </button>
-        {/* TODO: replace to input */}
         <div className="text-lg">{value}</div>
         <button
-          className="
-            flex
-            items-center
-            justify-center
-            w-8
-            h-8
-            rounded-full
-            border-[1px]
-            text-neutral-600
-            border-neutral-400
-            cursor-pointer
-            hover:opacity-80
-            transition
-          "
+          className="counter-btn"
           type="button"
           onClick={handleIncrement}
         >

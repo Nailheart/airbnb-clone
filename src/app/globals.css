@@ -89,6 +89,24 @@
   }
 }
 
+@layer components {
+  .counter-btn {
+    @apply 
+      flex
+      items-center
+      justify-center
+      w-8
+      h-8
+      rounded-full
+      border
+      text-neutral-600
+      border-neutral-400
+      cursor-pointer
+      transition
+      hover:opacity-80;
+  }
+}
+
 .rdrMonth {
   width: 100% !important;
 }
