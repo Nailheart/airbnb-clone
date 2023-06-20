@@ -1,5 +1,5 @@
 type ListingByIdRequestDto = {
-  listingId?: string;
+  listingId: string;
 };
 
 export { type ListingByIdRequestDto };

@@ -3,7 +3,7 @@ import { EmptyState } from '@/components/empty-state/empty-state';
 import { Listing } from '@/components/listing/listing';
 
 type Props = {
-  listingId?: string;
+  listingId: string;
 }
 
 const ListingPage = async ({ params }: { params: Props }) => {
