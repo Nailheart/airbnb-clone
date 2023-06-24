@@ -10,6 +10,7 @@ type Props = {
   title?: string;
   actionLabel: string;
   secondaryActionLabel?: string;
+  header?: ReactElement;
   body?: ReactElement;
   footer?: ReactElement;
   isOpen?: boolean;
@@ -23,6 +24,7 @@ const Modal: FC<Props> = ({
   title,
   actionLabel,
   secondaryActionLabel,
+  header,
   body,
   footer,
   isOpen,
@@ -41,8 +43,9 @@ const Modal: FC<Props> = ({
         <div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
           <Overlay className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-100 data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in" />
           <Content className="max-h-[100vh] overflow-y-auto fixed z-50 grid w-full rounded-b-lg border bg-background shadow-lg animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:max-w-2xl sm:rounded-lg">
-            <header className="text-center px-6 py-4 border-b">
+            <header className="text-center px-6 py-4 border-b relative">
               <span className="text-xl font-semibold">{title}</span>
+              {header}
             </header>
             <div className="px-6 py-4">{body}</div>
             <footer className="px-6 pt-4 pb-6">

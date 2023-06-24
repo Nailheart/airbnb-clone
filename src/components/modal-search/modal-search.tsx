@@ -15,6 +15,8 @@ import { CountrySelect } from '@/components/country-select/country-select';
 import { Modal } from '@/components/modal/modal';
 import { Heading } from '@/components/heading/heading';
 import { Map } from '@/components/map/map';
+import { Button } from '@/components/button/button';
+import { Icon } from '@/components/icon/icon';
 
 const ModalSearch = () => {
   const router = useRouter();
@@ -37,6 +39,20 @@ const ModalSearch = () => {
 
   const handleStepPrev = () => setStep((value) => value - 1);
   const handleStepNext = () => setStep((value) => value + 1);
+  
+  const handleClearFilters = () => {
+    setLocation(undefined)
+    setGuestCount(1);
+    setRoomCount(1);
+    setBathroomCount(1);
+    setDateRange({
+      startDate: new Date(),
+      endDate: new Date(),
+      key: 'selection',
+    })
+    setStep(ModalSearchSteps.LOCATION);
+    router.push('/');
+  }
 
   const onSubmit = async () => {
     if (step !== ModalSearchSteps.INFO) {
@@ -65,6 +81,18 @@ const ModalSearch = () => {
     searchModal.onClose();
     router.push(url);
   };
+
+  const header = (
+    <Button
+      className="w-auto absolute top-1/2 right-6 -translate-y-1/2"
+      variant="outline"
+      size="sm"
+      onClick={handleClearFilters}
+    >
+      Clear
+      <Icon name="filterX" className="ml-2 h-4 w-4" />
+    </Button>
+  );
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
@@ -132,6 +160,7 @@ const ModalSearch = () => {
       title="Filters"
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
+      header={header}
       body={bodyContent}
       isOpen={searchModal.isOpen}
       secondaryAction={handleStepPrev}

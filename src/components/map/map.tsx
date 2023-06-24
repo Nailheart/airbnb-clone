@@ -30,7 +30,7 @@ const ResetCenterView = ({ selectPosition }: { selectPosition?: LatLngExpression
     } else {
       map.setZoom(2);
     }
-  }, [selectPosition]);
+  }, [selectPosition, map]);
 
   return null;
 }

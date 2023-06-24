@@ -13,6 +13,7 @@ import {
   ImagePlus,
   Search,
   DollarSign,
+  FilterX
 } from 'lucide-react';
 
 import Airbnb from './svg/airbnb.svg';
@@ -50,6 +51,7 @@ const icons: Record<IconName, FC<SVGProps<SVGSVGElement>>> = {
   imagePlus: ImagePlus,
   search: Search,
   dollarSign: DollarSign,
+  filterX: FilterX,
   // custom icons
   boatFishing: BoatFishing,
   airbnb: Airbnb,

@@ -13,6 +13,7 @@ type IconName =
   | 'imagePlus'
   | 'search'
   | 'dollarSign'
+  | 'filterX'
   // custom icons
   | 'airbnb'
   | 'beach'
