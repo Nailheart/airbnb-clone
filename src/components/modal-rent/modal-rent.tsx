@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { ModalRentSteps } from '@/common/enums/enums';
@@ -23,7 +23,8 @@ const ModalRent = () => {
   const rentModal = useRentModal();
   const [step, setStep] = useState(ModalRentSteps.CATEGORY);
   const [isLoading, setIsLoading] = useState(false);
-  const { 
+  const {
+    control,
     register, 
     handleSubmit,
     setValue,
@@ -117,9 +118,21 @@ const ModalRent = () => {
           title="Where is your place located?"
           description="Help guests find you!"
         />
-        <CountrySelect
-          value={location} 
-          onChange={(value) => setCustomValue('location', value)}
+        <Controller
+          name="location"
+          control={control}
+          rules={{ required: "Set the location" }}
+          render={({ field, fieldState }) => (
+            <div className="relative">
+              <CountrySelect
+                value={field.value}
+                onChange={(value) => field.onChange(value)}
+              />
+              {fieldState.error && (
+                <span className="text-[red] text-sm leading-none absolute top-full">{fieldState.error.message}</span>
+              )}
+            </div>
+          )}
         />
         <Map center={location?.latlng} />
       </div>

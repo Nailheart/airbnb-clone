@@ -24,16 +24,14 @@ const CountrySelect: FC<Props> = ({ value, onChange }) => {
           <div>{option.flag}</div>
           <div>
             <span>{option.label},&nbsp;</span>
-            <span className="text-neutral-500">
-              {option.region}
-            </span>
+            <span className="text-neutral-500">{option.region}</span>
           </div>
         </div>
       )}
       classNames={{
-        control: () => 'p-3 border-2',
-        input: () => 'text-lg',
-        option: () => 'text-lg'
+        control: () => 'p-3',
+        input: () => 'text-lg leading-none',
+        option: () => 'text-lg cursor-pointer',
       }}
       theme={(theme) => ({
         ...theme,
