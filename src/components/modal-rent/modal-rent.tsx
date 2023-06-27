@@ -25,7 +25,6 @@ const ModalRent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     control,
-    register, 
     handleSubmit,
     setValue,
     watch,
@@ -41,9 +40,9 @@ const ModalRent = () => {
       roomCount: 1,
       bathroomCount: 1,
       imageSrc: '',
-      price: 1,
       title: '',
       description: '',
+      price: null,
     }
   });
 
@@ -193,20 +192,20 @@ const ModalRent = () => {
           description="Short and sweet works best!"
         />
         <Input
-          id="title"
+          name="title"
           label="Title"
           disabled={isLoading}
-          register={register}
+          control={control}
           errors={errors}
-          required
+          rules={{ required: 'Title is required.' }}
         />
         <Input
-          id="description"
+          name="description"
           label="Description"
           disabled={isLoading}
-          register={register}
+          control={control}
           errors={errors}
-          required
+          rules={{ required: 'Describe your place.' }}
         />
       </div>
     );
@@ -220,14 +219,21 @@ const ModalRent = () => {
           description="How much do you charge per night?"
         />
         <Input
-          id="price"
+          key="price"
+          name="price"
           label="Price"
           type="number"
           disabled={isLoading}
-          register={register}
+          control={control}
           errors={errors}
+          rules={{
+              required: 'Price is required.',
+              pattern: {
+                value: /^\d+(\.\d{1,2})?$/,
+                message: 'Please enter a valid price format.',
+              },
+          }}
           formatPrice
-          required
         />
       </div>
     );

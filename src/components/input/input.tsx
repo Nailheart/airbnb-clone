@@ -1,68 +1,81 @@
 'use client';
 
-import { FC } from 'react';
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import { FC, InputHTMLAttributes } from 'react';
+import {
+  FieldErrors,
+  FieldValues,
+  Control,
+  Path,
+  useController,
+  RegisterOptions,
+} from 'react-hook-form';
 
 import { cn } from '@/helpers/helpers';
 import { Icon } from '@/components/icon/icon';
 
+type ControlPath<T = FieldValues> = Path<T>;
+
 type Props = {
-  id: string;
   label: string;
-  type?: string;
-  disabled?: boolean;
-  formatPrice?: boolean;
-  required?: boolean;
+  name: ControlPath;
+  control: Control;
   errors: FieldErrors;
-  register: UseFormRegister<FieldValues>;
+  rules?: RegisterOptions;
+  className?: string;
+  placeholder?: string;
+  formatPrice?: boolean;
 }
 
-const Input: FC<Props> = ({
-  id,
+type InputProps = Props & Omit<InputHTMLAttributes<HTMLInputElement>, keyof Props>;
+
+const Input: FC<InputProps> = ({
   label,
-  type = "text", 
-  disabled, 
-  formatPrice,
-  required,
+  name,
+  control,
   errors,
-  register,
+  rules,
+  className,
+  placeholder=' ',
+  formatPrice,
+  type='text',
+  ...rest
 }) => {
+  const { field, fieldState } = useController({ name, control, rules });
+
   return (
     <div className="relative">
       {formatPrice && (
         <Icon
           name="dollarSign"
-          className="
-            text-neutral-700
-            absolute
-            top-1/2
-            left-2
-            -translate-y-1/2
-          "
+          className="text-neutral-700 absolute top-1/2 left-2 -translate-y-1/2"
         />
       )}
       <input
-        id={id}
         className={cn(
           'peer w-full p-4 bg-white border-2 border-neutral-300 rounded-md outline-none transition focus:border-black disabled:opacity-70 disabled:cursor-not-allowed',
           formatPrice && 'pl-9',
-          errors[id] && 'border-rose-500 focus:border-rose-500',
+          errors[name] && 'border-rose-500 focus:border-rose-500',
         )}
         type={type}
-        disabled={disabled}
-        placeholder=" "
-        {...register(id, { required })}
+        placeholder={placeholder}
+        required
+        {...field}
+        {...rest}
       />
-      <label 
+      <label
         className={cn(
           'absolute left-4 text-zinc-400 text-md px-2 -ml-2 bg-white rounded-sm duration-150 origin-[0] -translate-y-[50%] z-10 peer-focus:top-0 peer-focus:text-black peer-placeholder-shown:top-1/2',
           formatPrice && 'left-9',
-          errors[id] && '!text-rose-500',
+          errors[name] && '!text-rose-500',
         )}
-        htmlFor={id}
       >
         {label}
       </label>
+      {fieldState.error && (
+        <span className="text-[red] text-sm leading-none absolute top-full left-0">
+          {fieldState.error.message}
+        </span>
+      )}
     </div>
   );
 };

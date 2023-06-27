@@ -21,7 +21,7 @@ const ModalRegister = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
@@ -76,29 +76,37 @@ const ModalRegister = () => {
         description="Create an account"
       />
       <Input
-        id="name"
+        name="name"
         label="Name"
         disabled={isLoading}
-        register={register}
+        control={control}
         errors={errors}
-        required
       />
       <Input
-        id="email"
+        name="email"
         label="Email"
         disabled={isLoading}
-        register={register}
+        control={control}
         errors={errors}
-        required
+        rules={{
+          required: 'Email is required.',
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: 'Please enter a valid email address.',
+          },
+        }}
       />
       <Input
-        id="password"
+        name="password"
         label="Password"
         type="password"
         disabled={isLoading}
-        register={register}
+        control={control}
         errors={errors}
-        required
+        rules={{
+          required: 'Password is required.',
+          minLength: 8,
+        }}
       />
     </div>
   );
