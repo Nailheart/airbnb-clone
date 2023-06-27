@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Controller, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { ModalRentSteps } from '@/common/enums/enums';
+import { AppRoute, ModalRentSteps } from '@/common/enums/enums';
 import { useRentModal } from '@/hooks/hooks';
 import { listingCategories } from '@/common/constants/constants';
 import { CategoryInput } from '@/components/category-input/category-input';
@@ -77,9 +77,9 @@ const ModalRent = () => {
     axios.post('/api/listings', data)
     .then(() => {
       toast.success('Listing created!');
-      router.refresh();
+      router.push(AppRoute.PROPERTIES);
+      setStep(ModalRentSteps.CATEGORY);
       reset();
-      setStep(ModalRentSteps.CATEGORY)
       rentModal.onClose();
     })
     .catch((error: Error) => {
@@ -229,7 +229,7 @@ const ModalRent = () => {
           rules={{
               required: 'Price is required.',
               pattern: {
-                value: /^\d+(\.\d{1,2})?$/,
+                value: /^(?!0+(\.0{1,2})?$)\d+(\.\d{1,2})?$/,
                 message: 'Please enter a valid price format.',
               },
           }}
