@@ -42,7 +42,7 @@ const ModalRent = () => {
       imageSrc: '',
       title: '',
       description: '',
-      price: null,
+      price: '',
     }
   });
 
@@ -229,7 +229,7 @@ const ModalRent = () => {
           rules={{
               required: 'Price is required.',
               pattern: {
-                value: /^(?!0+(\.0{1,2})?$)\d+(\.\d{1,2})?$/,
+                value: /^[1-9]\d*$/,
                 message: 'Please enter a valid price format.',
               },
           }}
