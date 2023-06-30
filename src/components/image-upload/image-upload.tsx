@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import Image from 'next/image';
 import { CldUploadWidget } from 'next-cloudinary';
