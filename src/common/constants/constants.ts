@@ -78,7 +78,7 @@ const listingCategories: ListingCategory[] = [
     description: 'This property is in a barn!'
   },
   {
-    label: 'Luxe',
+    label: 'Lux',
     iconName: 'diamond',
     description: 'This property is brand new and luxurious!'
   }

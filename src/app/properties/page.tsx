@@ -2,6 +2,10 @@ import { getCurrentUser, getListings } from '@/services/services';
 import { EmptyState } from '@/components/empty-state/empty-state';
 import { Properties } from '@/components/properties/properties';
 
+export const metadata = {
+  title: 'Airbnb Clone | Properties',
+}
+
 const PropertiesPage = async () => {
   const currentUser = await getCurrentUser();
 
