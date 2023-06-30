@@ -19,7 +19,7 @@ const getFavoriteListings = async () => {
 
     return favorites;
   } catch (error) {
-    throw new Error(error as string);
+    throw new Error('Failed to fetch favorites.');
   }
 };
 

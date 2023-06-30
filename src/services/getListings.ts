@@ -1,20 +1,19 @@
 import prisma from '@/libs/prismadb';
 import { ListingRequestDto } from '@/common/types/types';
+import { Prisma } from '@prisma/client';
 
-const getListings = async (params: ListingRequestDto) => {
+const getListings = async ({
+  userId,
+  category,
+  roomCount,
+  guestCount,
+  bathroomCount,
+  locationValue,
+  startDate,
+  endDate,
+}: ListingRequestDto) => {
   try {
-    const {
-      userId,
-      category,
-      roomCount,
-      guestCount,
-      bathroomCount,
-      locationValue,
-      startDate,
-      endDate,
-    } = params;
-
-    const query: any = {};
+    const query: Prisma.ListingWhereInput = {};
 
     if (userId) { query.userId = userId; }
     if (category) { query.category = category; }
@@ -62,7 +61,7 @@ const getListings = async (params: ListingRequestDto) => {
 
     return listings;
   } catch (error) {
-    throw new Error(error as string);
+    throw new Error('Failed to fetch listings.');
   }
 };
 
