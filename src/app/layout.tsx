@@ -8,6 +8,7 @@ import { ModalRegister } from '@/components/modal-register/modal-register';
 import { ModalSearch } from '@/components/modal-search/modal-search';
 import { Toast } from '@/components/toast/toast';
 import { Navbar } from '@/components/navbar/navbar';
+import { ClientOnly } from '@/components/client-only/client-only';
 import './globals.css';
 
 const nunito = Nunito({ subsets: ['latin'] });
@@ -50,10 +51,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <ModalRent />
         <ModalLogin />
         <ModalRegister />
-        <ModalSearch />
+
+        <ClientOnly>
+          <ModalSearch />
+          <ModalRent />
+        </ClientOnly>
+      
         <Navbar user={currentUser} />
         <main className="min-h-full py-8">
           {children}
