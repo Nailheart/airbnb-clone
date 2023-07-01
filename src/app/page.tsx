@@ -10,6 +10,10 @@ type Props = {
 };
 
 const Home = async ({ searchParams }: Props) => {
+  if (!searchParams) {
+    return null;
+  }
+
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
