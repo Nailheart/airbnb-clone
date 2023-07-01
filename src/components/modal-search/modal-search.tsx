@@ -18,6 +18,12 @@ import { Map } from '@/components/map/map';
 import { Button } from '@/components/button/button';
 import { Icon } from '@/components/icon/icon';
 
+const initialDateRange = {
+  startDate: new Date(),
+  endDate: new Date(),
+  key: 'selection'
+};
+
 const ModalSearch = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -28,11 +34,7 @@ const ModalSearch = () => {
   const [guestCount, setGuestCount] = useState(1);
   const [roomCount, setRoomCount] = useState(1);
   const [bathroomCount, setBathroomCount] = useState(1);
-  const [dateRange, setDateRange] = useState<Range>({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection'
-  });
+  const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
   const actionLabel = step === ModalSearchSteps.INFO ? 'Search' : 'Next';
   const secondaryActionLabel = step === ModalSearchSteps.LOCATION ? undefined : 'Back';
@@ -45,11 +47,7 @@ const ModalSearch = () => {
     setGuestCount(1);
     setRoomCount(1);
     setBathroomCount(1);
-    setDateRange({
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection',
-    })
+    setDateRange(initialDateRange);
     setStep(ModalSearchSteps.LOCATION);
     router.push('/');
   }
